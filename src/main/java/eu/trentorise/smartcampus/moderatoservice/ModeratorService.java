@@ -95,5 +95,44 @@ public class ModeratorService {
 			throw new ModeratorServiceException(e);
 		}
 	}
+	
+	public MessageToMediationService getContentByEntityId(
+			String token, String app, String idEntity) throws SecurityException,
+			ModeratorServiceException {
+		try {
+			String json = RemoteConnector.getJSON(moderatorServiceURL,
+					"/rest/content/id/" + idEntity + "/" + app, token);
+			return JsonUtils
+					.toObject(json, MessageToMediationService.class);
+		} catch (RemoteException e) {
+			throw new ModeratorServiceException(e);
+		}
+	}
+	
+	public MessageToMediationService getContentByDateWindow(
+			String token, String app, long fromData,long toData) throws SecurityException,
+			ModeratorServiceException {
+		try {
+			String json = RemoteConnector.getJSON(moderatorServiceURL,
+					"/rest/content/from/" + fromData + "/to/"+toData +"/"+ app, token);
+			return JsonUtils
+					.toObject(json, MessageToMediationService.class);
+		} catch (RemoteException e) {
+			throw new ModeratorServiceException(e);
+		}
+	}
+	
+	public void deleteByEntityId(
+			String token, String app, String idEntity) throws SecurityException,
+			ModeratorServiceException {
+		try {
+			RemoteConnector.deleteJSON(moderatorServiceURL,
+					"/rest/content/id/" + idEntity + "/" + app, token);
+		
+		} catch (RemoteException e) {
+			throw new ModeratorServiceException(e);
+		}
+	}
+	
 
 }

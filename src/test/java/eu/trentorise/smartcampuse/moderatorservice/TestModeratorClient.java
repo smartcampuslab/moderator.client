@@ -47,6 +47,11 @@ public class TestModeratorClient {
 		Assert.assertNotNull(result2);
 		System.out.println(((List<MessageToMediationService>)result2).size());
 		
+		result2 = moderatorConnector.getContentByEntityId(Constants.CLIENT_AUTH_TOKEN, Constants.TEST_APP_ID,String.valueOf(testContent.getEntityId()));
+		Assert.assertNotNull(result2);
+		System.out.println(((List<MessageToMediationService>)result2).size());
+		
+		
 		result2 = moderatorConnector.getAllManualContent(Constants.CLIENT_AUTH_TOKEN, Constants.TEST_APP_ID);
 		Assert.assertNotNull(result2);
 		System.out.println(((List<MessageToMediationService>)result2).size());	
@@ -59,6 +64,10 @@ public class TestModeratorClient {
 		Assert.assertNotNull(result2);
 		System.out.println(((List<MessageToMediationService>)result2).size());	
 		
+		result2 = moderatorConnector.getContentByDateWindow(Constants.CLIENT_AUTH_TOKEN, Constants.TEST_APP_ID,testtime,testtime+900000);
+		Assert.assertNotNull(result2);
+		System.out.println(((List<MessageToMediationService>)result2).size());	
+		
 		result2 = moderatorConnector.addContentNoteByApp(Constants.CLIENT_AUTH_TOKEN, Constants.TEST_APP_ID,"1","prova note");
 		Assert.assertNotNull(result2);
 		System.out.println(((List<MessageToMediationService>)result2).size());
@@ -66,6 +75,9 @@ public class TestModeratorClient {
 		result2 = moderatorConnector.changeStatoManualFilterByApp(Constants.CLIENT_AUTH_TOKEN, Constants.TEST_APP_ID,"1",Stato.APPROVED);
 		Assert.assertNotNull(result2);
 		System.out.println(((List<MessageToMediationService>)result2).size());
+		
+		moderatorConnector.deleteByEntityId(Constants.CLIENT_AUTH_TOKEN, Constants.TEST_APP_ID,String.valueOf(testContent.getEntityId()));
+	
 		
 	}
 	
