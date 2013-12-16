@@ -25,7 +25,7 @@ public class ModeratorService {
 			ModeratorServiceException {
 		try {
 			String json = RemoteConnector.getJSON(moderatorServiceURL,
-					"/rest/comment/local/" + app + "/all", token);
+					"rest/comment/local/" + app + "/all", token);
 			return JsonUtils
 					.toObjectList(json, KeyWord.class);
 		} catch (RemoteException e) {
@@ -37,7 +37,7 @@ public class ModeratorService {
 			String app) throws SecurityException, ModeratorServiceException {
 		try {
 			String json = RemoteConnector.getJSON(moderatorServiceURL,
-					"/rest/comment/remote/" + app + "/all", token);
+					"rest/comment/remote/" + app + "/all", token);
 			return JsonUtils
 					.toObjectList(json, MessageToMediationService.class);
 		} catch (RemoteException e) {
@@ -50,7 +50,7 @@ public class ModeratorService {
 			ModeratorServiceException {
 		try {
 			String json = RemoteConnector.getJSON(moderatorServiceURL,
-					"/rest/comment/data/" + data + "/" + app, token);
+					"rest/comment/data/" + data + "/" + app, token);
 			return JsonUtils
 					.toObjectList(json, MessageToMediationService.class);
 		} catch (RemoteException e) {
@@ -62,7 +62,7 @@ public class ModeratorService {
 			throws SecurityException, ModeratorServiceException {
 		try {
 			String json = RemoteConnector.postJSON(moderatorServiceURL,
-					"/rest/comment/app/" + app + "/add",
+					"rest/comment/app/" + app + "/add",
 					JsonUtils.toJSON(messageToMediationService), token);
 			return json;
 		} catch (RemoteException e) {
@@ -75,7 +75,7 @@ public class ModeratorService {
 			ModeratorServiceException {
 		try {
 			String json = RemoteConnector.postJSON(moderatorServiceURL,
-					"/rest/comment/" + idcontent + "/app/" + app + "/note/add",
+					"rest/comment/" + idcontent + "/app/" + app + "/note/add",
 					JsonUtils.toJSON(note), token);
 			return json;
 		} catch (RemoteException e) {
@@ -88,7 +88,7 @@ public class ModeratorService {
 			ModeratorServiceException {
 		try {
 			String json = RemoteConnector
-					.putJSON(moderatorServiceURL, "/rest/comment/" + idcontent
+					.putJSON(moderatorServiceURL, "rest/comment/" + idcontent
 							+ "/app/" + app + "/mediationapproved/change/"
 							+ stato, null, token);
 			return json;
@@ -97,14 +97,14 @@ public class ModeratorService {
 		}
 	}
 	
-	public MessageToMediationService getContentByEntityId(
+	public List<MessageToMediationService> getContentByEntityId(
 			String token, String app, String idEntity) throws SecurityException,
 			ModeratorServiceException {
 		try {
 			String json = RemoteConnector.getJSON(moderatorServiceURL,
-					"/rest/content/id/" + idEntity + "/" + app, token);
+					"rest/content/id/" + idEntity + "/" + app, token);
 			return JsonUtils
-					.toObject(json, MessageToMediationService.class);
+					.toObjectList(json, MessageToMediationService.class);
 		} catch (RemoteException e) {
 			throw new ModeratorServiceException(e);
 		}
@@ -115,7 +115,7 @@ public class ModeratorService {
 			ModeratorServiceException {
 		try {
 			String json = RemoteConnector.getJSON(moderatorServiceURL,
-					"/rest/content/from/" + fromData + "/to/"+toData +"/"+ app, token);
+					"rest/content/from/" + fromData + "/to/"+toData +"/"+ app, token);
 			return JsonUtils
 					.toObjectList(json, MessageToMediationService.class);
 		} catch (RemoteException e) {
@@ -128,7 +128,7 @@ public class ModeratorService {
 			ModeratorServiceException {
 		try {
 			RemoteConnector.deleteJSON(moderatorServiceURL,
-					"/rest/content/id/" + idEntity + "/" + app, token);
+					"rest/content/id/" + idEntity + "/" + app, token);
 		
 		} catch (RemoteException e) {
 			throw new ModeratorServiceException(e);

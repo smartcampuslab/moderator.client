@@ -20,6 +20,7 @@ import java.util.List;
 import junit.framework.Assert;
 
 import org.junit.Before;
+import org.junit.Test;
 
 import eu.trentorise.smartcampus.moderatorservice.model.MessageToMediationService;
 import eu.trentorise.smartcampus.moderatorservice.model.Stato;
@@ -36,7 +37,7 @@ public class TestModeratorClient {
 
 	}
 
-//	@Test
+	@Test
 	public void testModerator() throws Exception {
 		Object result2;
 		
@@ -45,7 +46,7 @@ public class TestModeratorClient {
 		
 		result2 = moderatorConnector.addContentToManualFilterByApp(Constants.CLIENT_AUTH_TOKEN, Constants.TEST_APP_ID,testContent);
 		Assert.assertNotNull(result2);
-		System.out.println(((List<MessageToMediationService>)result2).size());
+		System.out.println(result2);
 		
 		result2 = moderatorConnector.getContentByEntityId(Constants.CLIENT_AUTH_TOKEN, Constants.TEST_APP_ID,String.valueOf(testContent.getEntityId()));
 		Assert.assertNotNull(result2);
