@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class MessageToMediationService implements Serializable {
 	
 	
-	private String _id;
+
 	private boolean parseApproved;
 	private Stato mediationApproved;
 	public Stato getMediationApproved() {
@@ -82,6 +82,7 @@ public class MessageToMediationService implements Serializable {
 	}
 
 	
+
 	public String getNote() {
 		return note;
 	}
@@ -96,13 +97,5 @@ public class MessageToMediationService implements Serializable {
 
 	public void setUserid(String userid) {
 		this.userid = userid;
-	}
-
-	public String get_id() {
-		return _id;
-	}
-
-	public void set_id(String _id) {
-		this._id = _id;
 	}
 }

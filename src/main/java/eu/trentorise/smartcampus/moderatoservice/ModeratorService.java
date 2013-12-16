@@ -2,6 +2,7 @@ package eu.trentorise.smartcampus.moderatoservice;
 
 import java.util.List;
 
+import eu.trentorise.smartcampus.moderatorservice.model.KeyWord;
 import eu.trentorise.smartcampus.moderatorservice.model.MessageToMediationService;
 import eu.trentorise.smartcampus.moderatorservice.model.Stato;
 import eu.trentorise.smartcampus.moderatoservice.exception.ModeratorServiceException;
@@ -19,14 +20,14 @@ public class ModeratorService {
 			moderatorServiceURL += '/';
 	}
 
-	public List<MessageToMediationService> getAllKeywordFilterContent(
+	public List<KeyWord> getAllKeywordFilterContent(
 			String token, String app) throws SecurityException,
 			ModeratorServiceException {
 		try {
 			String json = RemoteConnector.getJSON(moderatorServiceURL,
 					"/rest/comment/local/" + app + "/all", token);
 			return JsonUtils
-					.toObjectList(json, MessageToMediationService.class);
+					.toObjectList(json, KeyWord.class);
 		} catch (RemoteException e) {
 			throw new ModeratorServiceException(e);
 		}
@@ -109,14 +110,14 @@ public class ModeratorService {
 		}
 	}
 	
-	public MessageToMediationService getContentByDateWindow(
+	public List<MessageToMediationService> getContentByDateWindow(
 			String token, String app, long fromData,long toData) throws SecurityException,
 			ModeratorServiceException {
 		try {
 			String json = RemoteConnector.getJSON(moderatorServiceURL,
 					"/rest/content/from/" + fromData + "/to/"+toData +"/"+ app, token);
 			return JsonUtils
-					.toObject(json, MessageToMediationService.class);
+					.toObjectList(json, MessageToMediationService.class);
 		} catch (RemoteException e) {
 			throw new ModeratorServiceException(e);
 		}
