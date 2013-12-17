@@ -79,7 +79,7 @@ public class TestModeratorClient {
 		
 		
 		
-		moderatorConnector.deleteByEntityId(Constants.CLIENT_AUTH_TOKEN, Constants.TEST_APP_ID,String.valueOf(testContent.getObjectId()));
+		moderatorConnector.deleteByObjectId(Constants.CLIENT_AUTH_TOKEN, Constants.TEST_APP_ID,String.valueOf(testContent.getObjectId()));
 	
 		
 	}

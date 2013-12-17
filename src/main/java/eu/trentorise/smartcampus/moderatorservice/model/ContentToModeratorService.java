@@ -25,14 +25,14 @@ public class ContentToModeratorService implements Serializable {
 		this.setKeywordApproved(true);
 	}
 
-	public ContentToModeratorService(String webappname, String entityId,
-			String entityTesto, String userid) {
+	public ContentToModeratorService(String webappname, String objectId,
+			String entityText, String userid) {
 		this.setWebappname(webappname);
 		this.timestamp = System.currentTimeMillis();
 		this.setManualApproved(State.WAITING);
 		this.setKeywordApproved(true);
-		this.setObjectId(entityId);
-		this.setObjectText(entityTesto);
+		this.setObjectId(objectId);
+		this.setObjectText(entityText);
 		this.setUserid(userid);
 	}
 

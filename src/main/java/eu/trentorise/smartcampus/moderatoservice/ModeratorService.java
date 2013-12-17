@@ -98,11 +98,11 @@ public class ModeratorService {
 	}
 	
 	public List<ContentToModeratorService> getContentByObjectId(
-			String token, String app, String idEntity) throws SecurityException,
+			String token, String app, String objectId) throws SecurityException,
 			ModeratorServiceException {
 		try {
 			String json = RemoteConnector.getJSON(moderatorServiceURL,
-					"rest/content/id/" + idEntity + "/" + app, token);
+					"rest/content/id/" + objectId + "/" + app, token);
 			return JsonUtils
 					.toObjectList(json, ContentToModeratorService.class);
 		} catch (RemoteException e) {
@@ -123,7 +123,7 @@ public class ModeratorService {
 		}
 	}
 	
-	public void deleteByEntityId(
+	public void deleteByObjectId(
 			String token, String app, String idEntity) throws SecurityException,
 			ModeratorServiceException {
 		try {
