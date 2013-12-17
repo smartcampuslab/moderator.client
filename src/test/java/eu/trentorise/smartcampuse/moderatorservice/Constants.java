@@ -22,7 +22,7 @@ package eu.trentorise.smartcampuse.moderatorservice;
 public class Constants {
 
 	static final String USER_AUTH_TOKEN = "257071c7-18d4-47c0-ac64-0f0708705bfc";
-	static final String CLIENT_AUTH_TOKEN = "24f054d2-e49a-4e1a-ba63-e480243f0e95";
+	static final String CLIENT_AUTH_TOKEN = "a028c067-967f-45c2-bd82-3036951073cc";
 
 	static final String AAC_URL = "https://localhost:8080/aac/";
 	static final String MODERATOR_SRV_URL = "http://localhost:8080/core.moderator";

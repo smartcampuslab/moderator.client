@@ -3,19 +3,10 @@ package eu.trentorise.smartcampus.moderatorservice.model;
 import java.io.Serializable;
 
 public class MessageToMediationService implements Serializable {
-	
-	
 
+	private String _id;
 	private boolean parseApproved;
 	private Stato mediationApproved;
-	public Stato getMediationApproved() {
-		return mediationApproved;
-	}
-
-	public void setMediationApproved(Stato mediationApproved) {
-		this.mediationApproved = mediationApproved;
-	}
-
 	private long timestamp;
 	private String webappname;
 	private int entityId;
@@ -27,6 +18,8 @@ public class MessageToMediationService implements Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	public MessageToMediationService(){}
 
 	public MessageToMediationService(String webappname, int entityId,
 			String entityTesto, String userid) {
@@ -55,8 +48,6 @@ public class MessageToMediationService implements Serializable {
 		this.webappname = webappname;
 	}
 
-	
-
 	public long getTimestamp() {
 		return timestamp;
 	}
@@ -81,8 +72,6 @@ public class MessageToMediationService implements Serializable {
 		this.entityTesto = entityTesto;
 	}
 
-	
-
 	public String getNote() {
 		return note;
 	}
@@ -98,4 +87,21 @@ public class MessageToMediationService implements Serializable {
 	public void setUserid(String userid) {
 		this.userid = userid;
 	}
+
+	public String get_id() {
+		return _id;
+	}
+
+	public void set_id(String _id) {
+		this._id = _id;
+	}
+
+	public Stato getMediationApproved() {
+		return mediationApproved;
+	}
+
+	public void setMediationApproved(Stato mediationApproved) {
+		this.mediationApproved = mediationApproved;
+	}
+
 }

@@ -39,7 +39,7 @@ public class TestModeratorClient {
 
 	@Test
 	public void testModerator() throws Exception {
-		Object result2;
+		Object result2,result1;
 		
 		long testtime=System.currentTimeMillis();
 		MessageToMediationService testContent=new MessageToMediationService(Constants.TEST_APP_ID, 1, "provatest", "1");
@@ -48,10 +48,17 @@ public class TestModeratorClient {
 		Assert.assertNotNull(result2);
 		System.out.println(result2);
 		
-		result2 = moderatorConnector.getContentByEntityId(Constants.CLIENT_AUTH_TOKEN, Constants.TEST_APP_ID,String.valueOf(testContent.getEntityId()));
-		Assert.assertNotNull(result2);
-		System.out.println(((List<MessageToMediationService>)result2).size());
+		result1 = moderatorConnector.getContentByEntityId(Constants.CLIENT_AUTH_TOKEN, Constants.TEST_APP_ID,String.valueOf(testContent.getEntityId()));
+		Assert.assertNotNull(result1);
+		System.out.println(((List<MessageToMediationService>)result1).size());
 		
+		result2 = moderatorConnector.addContentNoteByApp(Constants.CLIENT_AUTH_TOKEN, Constants.TEST_APP_ID,((List<MessageToMediationService>)result1).get(0).get_id(),"prova note");
+		Assert.assertNotNull(result2);
+		System.out.println(result2);
+		
+		result2 = moderatorConnector.changeStatoManualFilterByApp(Constants.CLIENT_AUTH_TOKEN, Constants.TEST_APP_ID,((List<MessageToMediationService>)result1).get(0).get_id(),Stato.APPROVED);
+		Assert.assertNotNull(result2);
+		System.out.println(result2);
 		
 		result2 = moderatorConnector.getAllManualContent(Constants.CLIENT_AUTH_TOKEN, Constants.TEST_APP_ID);
 		Assert.assertNotNull(result2);
@@ -69,13 +76,8 @@ public class TestModeratorClient {
 		Assert.assertNotNull(result2);
 		System.out.println(((List<MessageToMediationService>)result2).size());	
 		
-		result2 = moderatorConnector.addContentNoteByApp(Constants.CLIENT_AUTH_TOKEN, Constants.TEST_APP_ID,"1","prova note");
-		Assert.assertNotNull(result2);
-		System.out.println(((List<MessageToMediationService>)result2).size());
 		
-		result2 = moderatorConnector.changeStatoManualFilterByApp(Constants.CLIENT_AUTH_TOKEN, Constants.TEST_APP_ID,"1",Stato.APPROVED);
-		Assert.assertNotNull(result2);
-		System.out.println(((List<MessageToMediationService>)result2).size());
+		
 		
 		moderatorConnector.deleteByEntityId(Constants.CLIENT_AUTH_TOKEN, Constants.TEST_APP_ID,String.valueOf(testContent.getEntityId()));
 	
