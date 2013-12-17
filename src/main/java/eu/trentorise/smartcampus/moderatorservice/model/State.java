@@ -1,5 +1,5 @@
 package eu.trentorise.smartcampus.moderatorservice.model;
 
-public enum Stato{
+public enum State{
 	APPROVED,NOT_APPROVED,WAITING,NOT_REQUEST
 }

@@ -2,9 +2,9 @@ package eu.trentorise.smartcampus.moderatoservice;
 
 import java.util.List;
 
+import eu.trentorise.smartcampus.moderatorservice.model.ContentToModeratorService;
 import eu.trentorise.smartcampus.moderatorservice.model.KeyWord;
-import eu.trentorise.smartcampus.moderatorservice.model.MessageToMediationService;
-import eu.trentorise.smartcampus.moderatorservice.model.Stato;
+import eu.trentorise.smartcampus.moderatorservice.model.State;
 import eu.trentorise.smartcampus.moderatoservice.exception.ModeratorServiceException;
 import eu.trentorise.smartcampus.network.JsonUtils;
 import eu.trentorise.smartcampus.network.RemoteConnector;
@@ -33,32 +33,32 @@ public class ModeratorService {
 		}
 	}
 
-	public List<MessageToMediationService> getAllManualContent(String token,
+	public List<ContentToModeratorService> getAllManualContent(String token,
 			String app) throws SecurityException, ModeratorServiceException {
 		try {
 			String json = RemoteConnector.getJSON(moderatorServiceURL,
 					"rest/comment/remote/" + app + "/all", token);
 			return JsonUtils
-					.toObjectList(json, MessageToMediationService.class);
+					.toObjectList(json, ContentToModeratorService.class);
 		} catch (RemoteException e) {
 			throw new ModeratorServiceException(e);
 		}
 	}
 
-	public List<MessageToMediationService> getAllManualContentByData(
+	public List<ContentToModeratorService> getAllManualContentByData(
 			String token, String app, long data) throws SecurityException,
 			ModeratorServiceException {
 		try {
 			String json = RemoteConnector.getJSON(moderatorServiceURL,
 					"rest/comment/data/" + data + "/" + app, token);
 			return JsonUtils
-					.toObjectList(json, MessageToMediationService.class);
+					.toObjectList(json, ContentToModeratorService.class);
 		} catch (RemoteException e) {
 			throw new ModeratorServiceException(e);
 		}
 	}
 
-	public String addContentToManualFilterByApp(String token, String app,MessageToMediationService messageToMediationService)
+	public String addContentToManualFilterByApp(String token, String app,ContentToModeratorService messageToMediationService)
 			throws SecurityException, ModeratorServiceException {
 		try {
 			String json = RemoteConnector.postJSON(moderatorServiceURL,
@@ -84,7 +84,7 @@ public class ModeratorService {
 	}
 
 	public String changeStatoManualFilterByApp(String token, String app,
-			String idcontent, Stato stato) throws SecurityException,
+			String idcontent, State stato) throws SecurityException,
 			ModeratorServiceException {
 		try {
 			String json = RemoteConnector
@@ -97,27 +97,27 @@ public class ModeratorService {
 		}
 	}
 	
-	public List<MessageToMediationService> getContentByEntityId(
+	public List<ContentToModeratorService> getContentByObjectId(
 			String token, String app, String idEntity) throws SecurityException,
 			ModeratorServiceException {
 		try {
 			String json = RemoteConnector.getJSON(moderatorServiceURL,
 					"rest/content/id/" + idEntity + "/" + app, token);
 			return JsonUtils
-					.toObjectList(json, MessageToMediationService.class);
+					.toObjectList(json, ContentToModeratorService.class);
 		} catch (RemoteException e) {
 			throw new ModeratorServiceException(e);
 		}
 	}
 	
-	public List<MessageToMediationService> getContentByDateWindow(
+	public List<ContentToModeratorService> getContentByDateWindow(
 			String token, String app, long fromData,long toData) throws SecurityException,
 			ModeratorServiceException {
 		try {
 			String json = RemoteConnector.getJSON(moderatorServiceURL,
 					"rest/content/from/" + fromData + "/to/"+toData +"/"+ app, token);
 			return JsonUtils
-					.toObjectList(json, MessageToMediationService.class);
+					.toObjectList(json, ContentToModeratorService.class);
 		} catch (RemoteException e) {
 			throw new ModeratorServiceException(e);
 		}
