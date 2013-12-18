@@ -58,13 +58,13 @@ public class ModeratorService {
 		}
 	}
 
-	public String addContentToManualFilterByApp(String token, String app,ContentToModeratorService messageToMediationService)
+	public Boolean addContentToManualFilterByApp(String token, String app,ContentToModeratorService messageToMediationService)
 			throws SecurityException, ModeratorServiceException {
 		try {
 			String json = RemoteConnector.postJSON(moderatorServiceURL,
 					"rest/comment/app/" + app + "/add",
 					JsonUtils.toJSON(messageToMediationService), token);
-			return json;
+			return Boolean.parseBoolean(json);
 		} catch (RemoteException e) {
 			throw new ModeratorServiceException(e);
 		}
