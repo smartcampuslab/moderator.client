@@ -70,20 +70,20 @@ public class ModeratorService {
 		}
 	}
 
-	public String addContentNoteByApp(String token, String app,
+	public Boolean addContentNoteByApp(String token, String app,
 			String idcontent, String note) throws SecurityException,
 			ModeratorServiceException {
 		try {
 			String json = RemoteConnector.postJSON(moderatorServiceURL,
 					"rest/comment/" + idcontent + "/app/" + app + "/note/add",
 					JsonUtils.toJSON(note), token);
-			return json;
+			return Boolean.parseBoolean(json);
 		} catch (RemoteException e) {
 			throw new ModeratorServiceException(e);
 		}
 	}
 
-	public String changeStatoManualFilterByApp(String token, String app,
+	public Boolean changeStatoManualFilterByApp(String token, String app,
 			String idcontent, State stato) throws SecurityException,
 			ModeratorServiceException {
 		try {
@@ -91,7 +91,7 @@ public class ModeratorService {
 					.putJSON(moderatorServiceURL, "rest/comment/" + idcontent
 							+ "/app/" + app + "/mediationapproved/change/"
 							+ stato, null, token);
-			return json;
+			return Boolean.parseBoolean(json);
 		} catch (RemoteException e) {
 			throw new ModeratorServiceException(e);
 		}
