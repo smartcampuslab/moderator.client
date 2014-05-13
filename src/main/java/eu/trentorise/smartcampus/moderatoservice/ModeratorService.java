@@ -25,7 +25,7 @@ public class ModeratorService {
 			ModeratorServiceException {
 		try {
 			String json = RemoteConnector.getJSON(moderatorServiceURL,
-					"rest/comment/local/" + app + "/all", token);
+					"rest/key/" + app + "/all", token);
 			return JsonUtils
 					.toObjectList(json, KeyWord.class);
 		} catch (RemoteException e) {
