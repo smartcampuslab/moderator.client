@@ -25,6 +25,7 @@ import org.junit.Test;
 import eu.trentorise.smartcampus.moderatorservice.model.ContentToModeratorService;
 import eu.trentorise.smartcampus.moderatorservice.model.State;
 import eu.trentorise.smartcampus.moderatoservice.ModeratorService;
+import eu.trentorise.smartcampus.moderatoservice.exception.ModeratorServiceException;
 
 public class TestModeratorClient {
 
@@ -84,4 +85,9 @@ public class TestModeratorClient {
 		
 	}
 	
+	@Test
+	public void test() throws SecurityException, ModeratorServiceException {
+		List<ContentToModeratorService> contentByDateWindow = moderatorConnector.getContentByDateWindow(Constants.CLIENT_AUTH_TOKEN, "ifame", 0L, System.currentTimeMillis());
+		Assert.assertNotNull(contentByDateWindow);
 	}
+}

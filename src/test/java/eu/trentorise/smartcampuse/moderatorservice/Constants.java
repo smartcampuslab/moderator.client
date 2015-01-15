@@ -21,12 +21,10 @@ package eu.trentorise.smartcampuse.moderatorservice;
  */
 public class Constants {
 
-	static final String USER_AUTH_TOKEN = "257071c7-18d4-47c0-ac64-0f0708705bfc";
-	static final String CLIENT_AUTH_TOKEN = "a028c067-967f-45c2-bd82-3036951073cc";
+	static final String CLIENT_AUTH_TOKEN = "6a5020f1-9cd0-4fe4-a1b5-77991e55798e";
 
-	static final String AAC_URL = "https://localhost:8080/aac/";
-	static final String MODERATOR_SRV_URL = "http://localhost:8080/core.moderator";
-	static final String TEST_APP_ID = "test";
+	static final String MODERATOR_SRV_URL = "https://platform.smartcommunitylab.it/core.moderator";
+	static final String TEST_APP_ID = "ifame";
 
 
 }
